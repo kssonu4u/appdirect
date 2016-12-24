@@ -1,26 +1,29 @@
 package com.appdirect.entity;
 
-import java.io.Serializable;
+import java.util.List;
 
-public class OrderDetails implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5069210776517744121L;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-	private String id;
-
+@Document(collection = "order_details")
+public class OrderDetails {
+	@Field("edition_code")
+	private String editionCode;
+	@Field
 	private Integer quantity;
-
+	@Field("pricing_duration")
+	private String pricingDuration;
+	@Field
 	private String unit;
+	@Field
+	private List<Item> items;
 
-	public String getId() {
-		return id;
+	public String getEditionCode() {
+		return editionCode;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setEditionCode(String editionCode) {
+		this.editionCode = editionCode;
 	}
 
 	public Integer getQuantity() {
@@ -31,6 +34,14 @@ public class OrderDetails implements Serializable{
 		this.quantity = quantity;
 	}
 
+	public String getPricingDuration() {
+		return pricingDuration;
+	}
+
+	public void setPricingDuration(String pricingDuration) {
+		this.pricingDuration = pricingDuration;
+	}
+
 	public String getUnit() {
 		return unit;
 	}
@@ -38,6 +49,15 @@ public class OrderDetails implements Serializable{
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
 	
 	
+
 }

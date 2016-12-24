@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.appdirect.appdirectdto.type.ErrorCode;
-import com.appdirect.appdirectdto.type.EventType;
 import com.appdirect.config.util.outhclient.OauthClient;
 import com.appdirect.dto.ApiResponse;
 import com.appdirect.dto.EventInfo;
@@ -28,14 +27,26 @@ public class EventEngineServiceImpl implements EventEngineService {
 
 	@Autowired
 	private OauthClient oauthClient;
-	
+
 	@Autowired
 	@Qualifier("CreateSubscription")
 	private EventService createSubscriptionService;
-	
+
 	@Autowired
 	@Qualifier("CancelSubscription")
 	private EventService cancelSubscriptionService;
+
+	@Autowired
+	@Qualifier("ChangeSubscription")
+	private EventService changeSubscriptionService;
+
+	@Autowired
+	@Qualifier("UserAssignment")
+	private EventService userAssignmentService;
+
+	@Autowired
+	@Qualifier("UserunAssignment")
+	private EventService userUnAssignment;
 
 	private static final Logger logger = LoggerFactory.getLogger(EventEngineServiceImpl.class);
 
@@ -51,38 +62,39 @@ public class EventEngineServiceImpl implements EventEngineService {
 			logger.debug("Response From AppDirect with eventURL:->" + eventUrl + " JSON:->" + responsFromAppDirect);
 		} catch (OAuthMessageSignerException | OAuthExpectationFailedException | OAuthCommunicationException
 				| IOException e) {
-			logger.debug("Exception occured while fetching response from AppDirect  with event URL:->" + eventUrl + " Exception Details :->"
-					+ e.getMessage());
-			throw new EventFetchException("Exception occured while fetching response from AppDirect  with event URL: : " + eventUrl
+			logger.debug("Exception occured while fetching response from AppDirect  with event URL:->" + eventUrl
 					+ " Exception Details :->" + e.getMessage());
+			throw new EventFetchException("Exception occured while fetching response from AppDirect  with event URL: : "
+					+ eventUrl + " Exception Details :->" + e.getMessage());
 		}
-		logger.debug("Response from Appdirect is :->"+responsFromAppDirect);
+		logger.info("Response from Appdirect is :->" + responsFromAppDirect);
 		return gson.fromJson(responsFromAppDirect, EventInfo.class);
 	}
 
 	@Override
 	public ApiResponse saveEventInformation(EventInfo eventInfo) {
-		eventInfo.setType(EventType.SUBSCRIPTION_ORDER);
 		// TODO Auto-generated method stub
 		try {
 			switch (eventInfo.getType()) {
-	        case SUBSCRIPTION_ORDER:
-	            return createSubscriptionService.processEvent(eventInfo);
-//	        case USER_ASSIGNMENT:
-//	            return userAssignment.handleEvent(eventInfo);
-//	        case SUBSCRIPTION_CHANGE:
-//	            return changeSubscription.handleEvent(eventInfo);
-	        case SUBSCRIPTION_CANCEL:
-	            return cancelSubscriptionService.processEvent(eventInfo);
-	        default:
-	            return new ApiResponse(false,
-	                    "Event type not supported by this endpoint:->" + String.valueOf(eventInfo.getType()),
-	                    ErrorCode.UNKNOWN_ERROR);
-	    }
+			case SUBSCRIPTION_ORDER:
+				return createSubscriptionService.processEvent(eventInfo);
+			case USER_ASSIGNMENT:
+				return userAssignmentService.processEvent(eventInfo);
+			case USER_UNASSIGNMENT:
+				return userUnAssignment.processEvent(eventInfo);
+			case SUBSCRIPTION_CHANGE:
+				return changeSubscriptionService.processEvent(eventInfo);
+			case SUBSCRIPTION_CANCEL:
+				return cancelSubscriptionService.processEvent(eventInfo);
+			default:
+				return new ApiResponse(false,
+						"Event type not supported by this endpoint:->" + String.valueOf(eventInfo.getType()),
+						ErrorCode.UNKNOWN_ERROR);
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			throw new EventProcessException("Exception occured while processing event of type :-> " + eventInfo.getType()
-					+ " Exception Details :->" + e.getMessage());
+			throw new EventProcessException("Exception occured while processing event of type :-> "
+					+ eventInfo.getType() + " Exception Details :->" + e.getMessage());
 		}
 	}
 

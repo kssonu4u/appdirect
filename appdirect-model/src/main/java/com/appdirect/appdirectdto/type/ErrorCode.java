@@ -11,7 +11,10 @@ public enum ErrorCode {
 	INVALID_RESPONSE,
 	TRANSPORT_ERROR,
 	UNKNOWN_ERROR,
-	MISSING_EVENT_URL;
+	MISSING_EVENT_URL,
+	PENDING,
+	FORBIDDEN,
+	BINDING_NOT_FOUND;
 
 	public static ErrorCode fromString(String string) {
 		for (ErrorCode errorCode: values()) {

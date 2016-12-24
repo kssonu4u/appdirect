@@ -1,6 +1,7 @@
 package com.appdirect.dto;
 
 public class Marketplace {
+	
 	private String baseUrl;
 
 	private String partner;

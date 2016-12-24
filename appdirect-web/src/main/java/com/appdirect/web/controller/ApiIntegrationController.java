@@ -32,8 +32,8 @@ public class ApiIntegrationController {
 		if (null != eventUrl && !eventUrl.isEmpty()) {
 			logger.info("Event Url received is :- " + eventUrl);
 			try {
-				//EventInfo eventInfo = eventInformationService.getEventInformation(eventUrl);
-				return eventInformationService.saveEventInformation(new EventInfo());
+				EventInfo eventInfo = eventInformationService.getEventInformation(eventUrl);
+				return eventInformationService.saveEventInformation(eventInfo);
 			} catch (EventFetchException e) {
 				// TODO: handle exception
 				return new ApiResponse(false, e.getMessage());

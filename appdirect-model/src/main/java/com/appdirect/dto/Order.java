@@ -5,6 +5,7 @@ import java.util.List;
 import com.appdirect.appdirectdto.type.PriceDuration;
 
 public class Order {
+	
 	private String editionCode;
 
 	private PriceDuration pricingDuration;

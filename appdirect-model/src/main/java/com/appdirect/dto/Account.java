@@ -1,17 +1,25 @@
 package com.appdirect.dto;
 
 public class Account {
-	
-	private Long id;
 
-	public Long getId() {
-		return id;
+	private String accountIdentifier;
+
+	private String status;
+
+	public String getAccountIdentifier() {
+		return accountIdentifier;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setAccountIdentifier(String accountIdentifier) {
+		this.accountIdentifier = accountIdentifier;
 	}
-	
-	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 }
