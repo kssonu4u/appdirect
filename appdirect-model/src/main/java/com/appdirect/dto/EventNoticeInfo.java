@@ -2,6 +2,11 @@ package com.appdirect.dto;
 
 import com.appdirect.appdirectdto.type.NoticeType;
 
+
+/**
+ * @author saurav class for representing notice info from appdirect 
+ *
+ */
 public class EventNoticeInfo {
 
 	private NoticeType type;

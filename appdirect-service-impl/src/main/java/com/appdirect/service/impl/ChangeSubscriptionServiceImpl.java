@@ -14,10 +14,15 @@ import com.appdirect.dto.EventInfo;
 import com.appdirect.dto.OrderItem;
 import com.appdirect.entity.Item;
 import com.appdirect.entity.OrderDetails;
-import com.appdirect.entity.Subscriptions;
+import com.appdirect.entity.Subscription;
 import com.appdirect.service.EventService;
 import com.appdirect.service.SubscriptionService;
 
+/**
+ * @author saurav service for handling change subscription request for a
+ *         particular subscription
+ *
+ */
 @Service("ChangeSubscription")
 public class ChangeSubscriptionServiceImpl implements EventService {
 
@@ -34,7 +39,7 @@ public class ChangeSubscriptionServiceImpl implements EventService {
 				&& null != eventInfo.getPayload().getOrder().getPricingDuration()) {
 			String accountId = eventInfo.getPayload().getAccount().getAccountIdentifier();
 			logger.info("Processing subscription change event for account :" + accountId);
-			Subscriptions subscriptions = subscriptionService.getSubscriptionById(accountId);
+			Subscription subscriptions = subscriptionService.getSubscriptionById(accountId);
 			if (null == subscriptions) {
 				return new ApiResponse(false,
 						"Subscription account doesnot exists for account identifier:->" + accountId,
@@ -52,7 +57,7 @@ public class ChangeSubscriptionServiceImpl implements EventService {
 			}
 			orderDetail.setItems(items);
 			subscriptions.setOrderDetails(orderDetail);
-			Subscriptions savedSubscription = subscriptionService.saveSubscription(subscriptions);
+			Subscription savedSubscription = subscriptionService.saveSubscription(subscriptions);
 			return new ApiResponse(true, "Subscription Changed  successfully for account :" + savedSubscription.getId(),
 					null, savedSubscription.getId());
 

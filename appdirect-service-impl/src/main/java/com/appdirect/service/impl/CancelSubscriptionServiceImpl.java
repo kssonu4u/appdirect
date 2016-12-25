@@ -8,10 +8,15 @@ import org.springframework.stereotype.Service;
 import com.appdirect.appdirectdto.type.ErrorCode;
 import com.appdirect.dto.ApiResponse;
 import com.appdirect.dto.EventInfo;
-import com.appdirect.entity.Subscriptions;
+import com.appdirect.entity.Subscription;
 import com.appdirect.service.EventService;
 import com.appdirect.service.SubscriptionService;
 
+/**
+ * @author saurav service for handling cancellation subscription request for a
+ *         particular subscription
+ *
+ */
 @Service("CancelSubscription")
 public class CancelSubscriptionServiceImpl implements EventService {
 
@@ -27,7 +32,7 @@ public class CancelSubscriptionServiceImpl implements EventService {
 				&& null != eventInfo.getPayload().getAccount().getAccountIdentifier()) {
 			String accountId = eventInfo.getPayload().getAccount().getAccountIdentifier();
 			logger.info("Processing subscription cancel event for account :" + accountId);
-			Subscriptions subscriptions = subscriptionService.getSubscriptionById(accountId);
+			Subscription subscriptions = subscriptionService.getSubscriptionById(accountId);
 			if (null == subscriptions) {
 				return new ApiResponse(false,
 						"Subscription account doesnot exists for account identifier:->" + accountId,

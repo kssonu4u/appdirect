@@ -1,13 +1,19 @@
 package com.appdirect.service;
 
-import com.appdirect.entity.Subscriptions;
+import com.appdirect.entity.Subscription;
 
+/**
+ * @author saurav interface for handling all the actions related to a
+ *         subscription
+ *
+ */
 public interface SubscriptionService {
-	public Subscriptions saveSubscription(Subscriptions account);
 
-	public Subscriptions getSubscriptionById(String accountIdentifier);
+	public Subscription saveSubscription(Subscription account);
 
-	public void deleteSubscription(Subscriptions subscriptions);
+	public Subscription getSubscriptionById(String accountIdentifier);
 
-	public Subscriptions getSubscriptionByUserId(String uuid);
+	public void deleteSubscription(Subscription subscriptions);
+
+	public Subscription getSubscriptionByUserId(String uuid);
 }

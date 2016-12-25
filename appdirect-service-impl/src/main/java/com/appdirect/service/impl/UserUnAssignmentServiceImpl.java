@@ -2,7 +2,6 @@ package com.appdirect.service.impl;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Predicate;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,11 +10,16 @@ import org.springframework.stereotype.Service;
 
 import com.appdirect.dto.ApiResponse;
 import com.appdirect.dto.EventInfo;
-import com.appdirect.entity.Subscriptions;
+import com.appdirect.entity.Subscription;
 import com.appdirect.entity.User;
 import com.appdirect.service.EventService;
 import com.appdirect.service.SubscriptionService;
 
+/**
+ * @author saurav service for handling user unassignment request in a particular
+ *         subscription
+ *
+ */
 @Service("UserunAssignment")
 public class UserUnAssignmentServiceImpl implements EventService {
 
@@ -29,26 +33,25 @@ public class UserUnAssignmentServiceImpl implements EventService {
 		// TODO Auto-generated method stub
 		if (null != eventInfo && null != eventInfo.getPayload() && null != eventInfo.getPayload().getUser()
 				&& null != eventInfo.getPayload().getAccount().getAccountIdentifier()) {
-			Subscriptions existingSubscription = subscriptionService
+			Subscription existingSubscription = subscriptionService
 					.getSubscriptionByUserId(eventInfo.getPayload().getUser().getUuid());
 			if (null == existingSubscription) {
 				return new ApiResponse(false, "User not  present in the existing subscription");
 			}
-			logger.info("Processing user unassignment  event for user with uuid :->" + eventInfo.getPayload().getUser().getUuid());
-			Subscriptions subscriptions = subscriptionService
+			logger.info("Processing user unassignment  event for user with uuid :->"
+					+ eventInfo.getPayload().getUser().getUuid());
+			Subscription subscriptions = subscriptionService
 					.getSubscriptionById(eventInfo.getPayload().getAccount().getAccountIdentifier());
 			List<User> users = subscriptions.getUsers();
 			Iterator<User> iterator = users.iterator();
-			while(iterator.hasNext())
-			{
+			while (iterator.hasNext()) {
 				User u = iterator.next();
-			    if (eventInfo.getPayload().getUser().getUuid().equals(u.getUuid()))
-			    {
-			        iterator.remove();
-			        break;
-			    }
+				if (eventInfo.getPayload().getUser().getUuid().equals(u.getUuid())) {
+					iterator.remove();
+					break;
+				}
 			}
-	        subscriptions.setUsers(users);
+			subscriptions.setUsers(users);
 			subscriptionService.saveSubscription(subscriptions);
 			return new ApiResponse(true, "User unassigned successfully from Subscription account ", null);
 		}

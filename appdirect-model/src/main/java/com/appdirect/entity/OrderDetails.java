@@ -1,12 +1,22 @@
 package com.appdirect.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+/**
+ * @author saurav class for representing order details of a particular
+ *         subscription
+ *
+ */
 @Document(collection = "order_details")
-public class OrderDetails {
+public class OrderDetails implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3609838346463923494L;
 	@Field("edition_code")
 	private String editionCode;
 	@Field
@@ -57,7 +67,5 @@ public class OrderDetails {
 	public void setItems(List<Item> items) {
 		this.items = items;
 	}
-	
-	
 
 }

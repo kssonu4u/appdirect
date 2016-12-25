@@ -2,6 +2,5 @@
 /home/covacsis/workspace-appdirect/appdirect/appdirect-config/src/main/java/com/appdirect/config/util/outhclient/OauthClient.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-config/src/main/java/com/appdirect/exception/EventProcessException.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-config/src/main/java/com/appdirect/config/OauthSecret.java
-/home/covacsis/workspace-appdirect/appdirect/appdirect-config/src/main/java/com/appdirect/config/util/outhclient/Request.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-config/src/main/java/com/appdirect/config/util/outhclient/OauthClientImpl.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-config/src/main/java/com/appdirect/exception/EventFetchException.java

@@ -16,11 +16,16 @@ import com.appdirect.dto.OrderItem;
 import com.appdirect.entity.Company;
 import com.appdirect.entity.OrderDetails;
 import com.appdirect.entity.Item;
-import com.appdirect.entity.Subscriptions;
+import com.appdirect.entity.Subscription;
 import com.appdirect.entity.User;
 import com.appdirect.service.EventService;
 import com.appdirect.service.SubscriptionService;
 
+/**
+ * @author saurav service for handling create subscription request for a
+ *         particular subscription
+ *
+ */
 @Service("CreateSubscription")
 public class CreateSubscriptionServiceImpl implements EventService {
 
@@ -34,7 +39,7 @@ public class CreateSubscriptionServiceImpl implements EventService {
 		// TODO Auto-generated method stub
 		if (null != eventInfo && null != eventInfo.getPayload() && null != eventInfo.getPayload().getCompany()
 				&& null != eventInfo.getPayload().getCompany().getUuid()) {
-			Subscriptions existingSubscription = subscriptionService
+			Subscription existingSubscription = subscriptionService
 					.getSubscriptionById(eventInfo.getPayload().getCompany().getUuid());
 			if (null != existingSubscription) {
 				logger.debug("Subscription account exists with Id: " + existingSubscription.getId());
@@ -43,7 +48,7 @@ public class CreateSubscriptionServiceImpl implements EventService {
 						ErrorCode.OPERATION_CANCELLED);
 			}
 			logger.info("Processing subscription create event for account :" + eventInfo.getPayload().getCompany().getUuid());
-			Subscriptions subscription = new Subscriptions();
+			Subscription subscription = new Subscription();
 			subscription.setAccountIdentifier(eventInfo.getPayload().getCompany().getUuid());
 			subscription.setNoticeType(null);
 			subscription.setSubscriptionStatus(SubscriptionStatus.ACTIVE);
@@ -82,7 +87,7 @@ public class CreateSubscriptionServiceImpl implements EventService {
 			}
 			orderDetail.setItems(items);
 			subscription.setOrderDetails(orderDetail);
-			Subscriptions savedSubscription = subscriptionService.saveSubscription(subscription);
+			Subscription savedSubscription = subscriptionService.saveSubscription(subscription);
 			return new ApiResponse(true, "Subscription account created successfully", null, savedSubscription.getId());
 		}
 		return new ApiResponse(false, "Event Info is null or one of the attribute of Event Info is null");

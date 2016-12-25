@@ -17,6 +17,10 @@ import com.appdirect.dto.EventInfo;
 import com.appdirect.exception.EventFetchException;
 import com.appdirect.service.EventEngineService;
 
+/**
+ * @author saurav end point for handling requests from appdirect
+ *
+ */
 @RestController
 @RequestMapping("/api/appdirectintegration/v1")
 public class ApiIntegrationController {
@@ -28,7 +32,8 @@ public class ApiIntegrationController {
 
 	@RequestMapping(value = "/eventlistner", method = RequestMethod.GET)
 	public ApiResponse handleEvent(HttpServletRequest request, HttpServletResponse response,
-			@RequestParam(value = "eventUrl", required = false) String eventUrl) {
+			@RequestParam(value = "eventUrl", required = false) String eventUrl,
+			@RequestParam(value = "token", required = false) String token) {
 		if (null != eventUrl && !eventUrl.isEmpty()) {
 			logger.info("Event Url received is :- " + eventUrl);
 			try {
@@ -42,4 +47,5 @@ public class ApiIntegrationController {
 		return new ApiResponse(false, "Event url is empty", ErrorCode.MISSING_EVENT_URL);
 
 	}
+
 }

@@ -9,11 +9,16 @@ import org.springframework.stereotype.Service;
 
 import com.appdirect.dto.ApiResponse;
 import com.appdirect.dto.EventInfo;
-import com.appdirect.entity.Subscriptions;
+import com.appdirect.entity.Subscription;
 import com.appdirect.entity.User;
 import com.appdirect.service.EventService;
 import com.appdirect.service.SubscriptionService;
 
+/**
+ * @author saurav service for handling User assignment request in a particular
+ *         subscription
+ *
+ */
 @Service("UserAssignment")
 public class UserAssignmentServiceImpl implements EventService {
 
@@ -27,13 +32,13 @@ public class UserAssignmentServiceImpl implements EventService {
 		// TODO Auto-generated method stub
 		if (null != eventInfo && null != eventInfo.getPayload() && null != eventInfo.getPayload().getUser()
 				&& null != eventInfo.getPayload().getAccount().getAccountIdentifier()) {
-			Subscriptions existingSubscription = subscriptionService
+			Subscription existingSubscription = subscriptionService
 					.getSubscriptionByUserId(eventInfo.getPayload().getUser().getUuid());
 			if (null != existingSubscription) {
 				return new ApiResponse(false, "User all ready present in the existing subscription");
 			}
 			logger.info("Processing user assignment  event for account :" + eventInfo.getPayload().getUser().getUuid());
-			Subscriptions subscriptions = subscriptionService
+			Subscription subscriptions = subscriptionService
 					.getSubscriptionById(eventInfo.getPayload().getAccount().getAccountIdentifier());
 			List<User> users = subscriptions.getUsers();
 			User user = new User();
@@ -46,7 +51,8 @@ public class UserAssignmentServiceImpl implements EventService {
 			users.add(user);
 			subscriptions.setUsers(users);
 			subscriptionService.saveSubscription(subscriptions);
-			return new ApiResponse(true, "User assigned successfullly to Subscription account :->", null, eventInfo.getPayload().getUser().getUuid());
+			return new ApiResponse(true, "User assigned successfullly to Subscription account :->", null,
+					eventInfo.getPayload().getUser().getUuid());
 		}
 		return new ApiResponse(false,
 				"Event Info is null or one of the attribute of Event Info is null in UserAssignment Event");

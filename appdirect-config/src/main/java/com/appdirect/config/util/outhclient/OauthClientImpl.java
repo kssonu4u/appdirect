@@ -21,6 +21,11 @@ import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
 import oauth.signpost.signature.QueryStringSigningStrategy;
 
+/**
+ * @author saurav
+ * This class is used for getting signed fetch request from appdirect
+ *
+ */
 @Component
 public class OauthClientImpl implements OauthClient {
 
@@ -38,12 +43,10 @@ public class OauthClientImpl implements OauthClient {
 				oauthSecret.getConsumersecret());
 		consumer.setSigningStrategy(new QueryStringSigningStrategy());
 
-		// sign fetch from the appdirect event url
 		URL url = new URL(consumer.sign(eventUrl));
 
 		HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
 
-		// get json data only
 		connection.setRequestProperty("Content-Type", "application/json");
 		connection.setRequestProperty("Accept", "application/json");
 		logger.debug("Sending request for URL:" + eventUrl);
@@ -53,7 +56,7 @@ public class OauthClientImpl implements OauthClient {
 
 		// process stream to get JSON string
 		BufferedReader br = null;
-		if (200 <= connection.getResponseCode() && connection.getResponseCode() <= 299) {
+		if (199 < connection.getResponseCode() && connection.getResponseCode() < 300) {
 			br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
 		} else {
 			br = new BufferedReader(new InputStreamReader((connection.getErrorStream())));

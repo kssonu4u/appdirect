@@ -1,9 +1,20 @@
 package com.appdirect.entity;
 
+import java.io.Serializable;
+
 import org.springframework.data.mongodb.core.mapping.Field;
 
-public class User {
-	
+/**
+ * @author saurav class for representing users assigned to a particular
+ *         subscription
+ *
+ */
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6099143978424770087L;
 	@Field("first_name")
 	private String firstName;
 	@Field("last_name")
@@ -64,7 +75,5 @@ public class User {
 	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
-	
-	
 
 }

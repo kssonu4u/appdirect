@@ -2,6 +2,10 @@ package com.appdirect.dto;
 
 import com.appdirect.appdirectdto.type.ErrorCode;
 
+/**
+ * @author saurav class for representing generic response to any client
+ *
+ */
 public class ApiResponse {
 	
 	private String accountIdentifier;
@@ -70,7 +74,7 @@ public class ApiResponse {
 		this.message = message;
 	}
 
-	public boolean isSuccess() {
+	public boolean getSuccess() {
 		return success;
 	}
 

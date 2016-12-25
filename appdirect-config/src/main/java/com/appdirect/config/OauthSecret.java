@@ -1,7 +1,8 @@
 package com.appdirect.config;
 
 /**
- * Produces Signed-Oauth Consumer-Secret And Consumer-key.
+ * @author saurav Produces Signed-Oauth Consumer-Secret And Consumer-key.
+ *
  */
 public class OauthSecret {
 

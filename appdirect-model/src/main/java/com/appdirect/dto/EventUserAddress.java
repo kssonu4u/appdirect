@@ -1,5 +1,9 @@
 package com.appdirect.dto;
 
+/**
+ * @author saurav class for representing User address from appdirect
+ *
+ */
 public class EventUserAddress {
 	private String firstName;
 
@@ -18,6 +22,24 @@ public class EventUserAddress {
 	private String zip;
 
 	private String street2;
+
+	public EventUserAddress() {
+		super();
+	}
+
+	public EventUserAddress(String firstName, String fullName, String lastName, String city, String country,
+			String state, String street1, String zip, String street2) {
+		super();
+		this.firstName = firstName;
+		this.fullName = fullName;
+		this.lastName = lastName;
+		this.city = city;
+		this.country = country;
+		this.state = state;
+		this.street1 = street1;
+		this.zip = zip;
+		this.street2 = street2;
+	}
 
 	public String getFirstName() {
 		return firstName;

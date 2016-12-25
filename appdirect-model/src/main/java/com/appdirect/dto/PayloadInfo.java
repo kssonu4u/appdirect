@@ -1,5 +1,9 @@
 package com.appdirect.dto;
 
+/**
+ * @author saurav class for representing payload from app direct
+ *
+ */
 public class PayloadInfo {
 	private Organization company;
 

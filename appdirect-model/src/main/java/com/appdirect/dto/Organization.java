@@ -1,12 +1,25 @@
 package com.appdirect.dto;
 
+/**
+ * @author saurav class for representing Company information
+ *
+ */
 public class Organization {
-	
+
 	private String country;
 	private String name;
 	private String uuid;
 	private String website;
 	private String phoneNumber;
+
+	public Organization(String country, String name, String uuid, String website, String phoneNumber) {
+		super();
+		this.country = country;
+		this.name = name;
+		this.uuid = uuid;
+		this.website = website;
+		this.phoneNumber = phoneNumber;
+	}
 
 	public String getCountry() {
 		return country;

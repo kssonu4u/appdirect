@@ -2,6 +2,10 @@ package com.appdirect.dto;
 
 import java.util.Map;
 
+/**
+ * @author sauurav class for representing User Info from appdirect
+ *
+ */
 public class EventUserInfo {
 
 	private EventUserAddress address;
@@ -19,6 +23,24 @@ public class EventUserInfo {
 	private String uuid;
 
 	private Map<String, String> attributes;
+	
+	
+	
+	public EventUserInfo() {
+		super();
+	}
+
+	public EventUserInfo(EventUserAddress address, String email, String firstName, String language, String lastName,
+			String openId, String uuid) {
+		super();
+		this.address = address;
+		this.email = email;
+		this.firstName = firstName;
+		this.language = language;
+		this.lastName = lastName;
+		this.openId = openId;
+		this.uuid = uuid;
+	}
 
 	public EventUserAddress getAddress() {
 		return address;

@@ -1,9 +1,10 @@
+com/appdirect/service/impl/UserUnAssignmentServiceImpl.class
 com/appdirect/service/impl/EventEngineServiceImpl$1.class
 com/appdirect/service/impl/AccountServiceImpl.class
 com/appdirect/service/impl/SubscriptionServiceImpl.class
 com/appdirect/service/impl/CreateSubscriptionServiceImpl.class
 com/appdirect/service/impl/CancelSubscriptionServiceImpl.class
 com/appdirect/service/impl/ChangeSubscriptionServiceImpl.class
+com/appdirect/service/impl/UserAssignmentServiceImpl.class
 com/appdirect/service/impl/EventEngineServiceImpl.class
 com/appdirect/service/impl/SubscriptionNoticeServiceImpl.class
-com/appdirect/service/impl/UserServiceAssignmentServiceImpl.class

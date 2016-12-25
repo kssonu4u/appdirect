@@ -1,10 +1,20 @@
 package com.appdirect.dto;
 
+/**
+ * @author saurav class for represent market place information
+ *
+ */
 public class Marketplace {
-	
+
 	private String baseUrl;
 
 	private String partner;
+
+	public Marketplace(String baseUrl, String partner) {
+		super();
+		this.baseUrl = baseUrl;
+		this.partner = partner;
+	}
 
 	public String getBaseUrl() {
 		return baseUrl;

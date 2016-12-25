@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
- * Hello world!
+ * @author saurav starting point of the spring boot application
  *
  */
 @EnableMongoRepositories("com.appdirect")

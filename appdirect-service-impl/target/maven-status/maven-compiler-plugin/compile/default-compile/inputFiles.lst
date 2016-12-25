@@ -1,7 +1,8 @@
 /home/covacsis/workspace-appdirect/appdirect/appdirect-service-impl/src/main/java/com/appdirect/service/impl/EventEngineServiceImpl.java
+/home/covacsis/workspace-appdirect/appdirect/appdirect-service-impl/src/main/java/com/appdirect/service/impl/UserUnAssignmentServiceImpl.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-service-impl/src/main/java/com/appdirect/service/impl/CancelSubscriptionServiceImpl.java
+/home/covacsis/workspace-appdirect/appdirect/appdirect-service-impl/src/main/java/com/appdirect/service/impl/UserAssignmentServiceImpl.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-service-impl/src/main/java/com/appdirect/service/impl/CreateSubscriptionServiceImpl.java
-/home/covacsis/workspace-appdirect/appdirect/appdirect-service-impl/src/main/java/com/appdirect/service/impl/UserServiceAssignmentServiceImpl.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-service-impl/src/main/java/com/appdirect/service/impl/ChangeSubscriptionServiceImpl.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-service-impl/src/main/java/com/appdirect/service/impl/SubscriptionServiceImpl.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-service-impl/src/main/java/com/appdirect/service/impl/SubscriptionNoticeServiceImpl.java

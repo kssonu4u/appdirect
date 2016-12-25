@@ -22,6 +22,11 @@ import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
 
+/**
+ * @author saurav service for handling getting of event information from
+ *         appdirect and aving it to our database
+ *
+ */
 @Service
 public class EventEngineServiceImpl implements EventEngineService {
 

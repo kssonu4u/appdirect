@@ -1,3 +1,4 @@
 /.classpath
 /target
-/appdirect-config/target/
+.gitignore
+*.class

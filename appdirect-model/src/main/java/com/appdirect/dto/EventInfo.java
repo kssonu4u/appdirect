@@ -3,6 +3,10 @@ package com.appdirect.dto;
 import com.appdirect.appdirectdto.type.EventFlag;
 import com.appdirect.appdirectdto.type.EventType;
 
+/**
+ * @author class for representing event info object from appdirect
+ *
+ */
 public class EventInfo {
 	private EventType type;
 
