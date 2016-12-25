@@ -1,5 +1,3 @@
-/home/covacsis/workspace-appdirect/appdirect/appdirect-web/src/main/java/com/appdirect/web/security/springsecurity/TokenAuthenticationFilter.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-web/src/main/java/com/appdirect/web/controller/AccountController.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-web/src/main/java/com/appdirect/web/controller/ApiIntegrationController.java
 /home/covacsis/workspace-appdirect/appdirect/appdirect-web/src/main/java/com/appdirect/web/AppDirectApplication.java
-/home/covacsis/workspace-appdirect/appdirect/appdirect-web/src/main/java/com/appdirect/web/security/oauth2springsecurity/TokenEndpointAuthenticationFilter.java
