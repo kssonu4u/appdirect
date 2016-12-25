@@ -38,6 +38,10 @@ public class Employee {
 		this.name = name;
 	}
 
+	public Employee() {
+		super();
+	}
+	
 	
 
 }
